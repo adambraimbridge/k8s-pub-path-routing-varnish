@@ -39,7 +39,7 @@ sub vcl_recv {
         set req.url = regsub(req.url, "video", "/notify");
         set req.backend_hint = dynBackend.backend("cms-notifier");
     } 
-    eif (req.url ~ "^\/metadata.*$") {
+    elif (req.url ~ "^\/metadata.*$") {
         set req.url = regsub(req.url, "metadata", "/notify");
         set req.backend_hint = dynBackend.backend("cms-metadata-notifier");
     } 
