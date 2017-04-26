@@ -32,27 +32,27 @@ sub vcl_recv {
     }
 
     if (req.url ~ "^\/content.*$") {
-        set req.url = regsub(req.url, "content", "/notify");
+        set req.url = regsub(req.url, "content", "notify");
         set req.backend_hint = dynBackend.backend("cms-notifier");
     } 
     elif (req.url ~ "^\/video.*$") {
-        set req.url = regsub(req.url, "video", "/notify");
+        set req.url = regsub(req.url, "video", "notify");
         set req.backend_hint = dynBackend.backend("cms-notifier");
     } 
     elif (req.url ~ "^\/metadata.*$") {
-        set req.url = regsub(req.url, "metadata", "/notify");
+        set req.url = regsub(req.url, "metadata", "notify");
         set req.backend_hint = dynBackend.backend("cms-metadata-notifier");
     } 
     elif (req.url ~ "\/notification\/wordpress.*$") {
-        set req.url = regsub(req.url, "notification\/wordpress", "/content");
+        set req.url = regsub(req.url, "notification\/wordpress", "content");
         set req.backend_hint = dynBackend.backend("wordpress-notifier");
     } 
     elif (req.url ~ "\/notification\/brightcove\/content.*$") {
-        set req.url = regsub(req.url, "notification\/brightcove\/content", "/notify");
+        set req.url = regsub(req.url, "notification\/brightcove\/content", "notify");
         set req.backend_hint = dynBackend.backend("brightcove-notifier");
     } 
     elif (req.url ~ "\/notification\/brightcove\/metadata.*$") {
-        set req.url = regsub(req.url, "notification\/brightcove\/metadata", "/notify");
+        set req.url = regsub(req.url, "notification\/brightcove\/metadata", "notify");
         set req.backend_hint = dynBackend.backend("brightcove-metadata-preprocessor");
     } 
     elif (req.url ~ "^\/__[\w-]*\/.*$") {
