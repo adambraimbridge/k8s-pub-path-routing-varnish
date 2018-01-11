@@ -43,6 +43,10 @@ sub vcl_recv {
         set req.url = regsub(req.url, "metadata", "notify");
         set req.backend_hint = dynBackend.backend("cms-metadata-notifier");
     } 
+    elif (req.url ~ "^\/smartlogic.*$") {
+        set req.url = regsub(req.url, "smartlogic", "notify");
+        set req.backend_hint = dynBackend.backend("smartlogic-notifier");
+    } 
     elif (req.url ~ "\/notification\/wordpress.*$") {
         set req.url = regsub(req.url, "notification\/wordpress", "content");
         set req.backend_hint = dynBackend.backend("wordpress-notifier");
