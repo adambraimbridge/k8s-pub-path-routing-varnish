@@ -1,0 +1,4 @@
+apiVersion: v1
+description: k8s-pub-path-routing-varnish Helm chart for Kubernetes
+name: k8s-pub-path-routing-varnish
+version: 0.0.0  # this entry can be left untouched as it is automatically handled by Jenkins pipeline
