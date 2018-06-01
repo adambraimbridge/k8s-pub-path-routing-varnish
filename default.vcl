@@ -59,7 +59,7 @@ sub vcl_recv {
         set req.url = regsub(req.url, "notification\/brightcove\/metadata", "notify");
         set req.backend_hint = dynBackend.backend("brightcove-metadata-preprocessor");
     } 
-    elif (req.url ~ "\/schemas.*$") {
+    elif (req.url ~ "^\/schemas.*$") {
         set req.backend_hint = dynBackend.backend("json-schema-reader");
     } 
     elif (req.url ~ "^\/__[\w-]*\/.*$") {
