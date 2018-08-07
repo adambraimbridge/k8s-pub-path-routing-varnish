@@ -60,7 +60,7 @@ sub vcl_recv {
         set req.backend_hint = dynBackend.backend("brightcove-metadata-preprocessor");
     } 
     elif (req.url ~ "^\/schemas.*$") {
-        set req.backend_hint = dynBackend.backend("json-schema-reader");
+        set req.backend_hint = dynBackend.backend("upp-schema-reader");
     } 
     elif (req.url ~ "^\/__[\w-]*\/.*$") {
         # create a new backend dynamically to match the requested URL that will be looked up in the Kubernetes DNS.
