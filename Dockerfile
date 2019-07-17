@@ -6,12 +6,13 @@ ENV VARNISHSRC=/usr/include/varnish VMODDIR=/usr/lib/varnish/vmods
 
 RUN apt-get update -q && \
   apt-get install -qq git curl apt-transport-https autotools-dev automake autoconf libtool python make python-docutils sudo gnupg2 && \
-  curl -L https://packagecloud.io/varnishcache/varnish60/gpgkey | sudo apt-key add - && \
-  echo "deb https://packagecloud.io/varnishcache/varnish60/ubuntu/ bionic main" | tee /etc/apt/sources.list.d/varnish-cache.list && \
+  curl -L https://packagecloud.io/varnishcache/varnish62/gpgkey | sudo apt-key add - && \
+  echo "deb https://packagecloud.io/varnishcache/varnish62/ubuntu/ bionic main" | tee /etc/apt/sources.list.d/varnish-cache.list && \
   apt-get -q update && \
+  apt-get install -qq libgetdns-dev && \
   apt-get install -qq varnish varnish-dev && \
     cd / && echo "-------mod-dynamic build -------" && \
-    git clone -b 6.0 https://github.com/nigoroll/libvmod-dynamic.git && \
+    git clone -b 6.2 https://github.com/nigoroll/libvmod-dynamic.git && \
     cd libvmod-dynamic && \
     ./autogen.sh && \
     ./configure && \
