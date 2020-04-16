@@ -1,0 +1,10 @@
+# Values used for the deployed application.
+replicaCount: 2
+service:
+  name: path-routing-varnish
+
+eksCluster: true
+
+image:
+  repository: coco/k8s-pub-path-routing-varnish
+  pullPolicy: IfNotPresent
